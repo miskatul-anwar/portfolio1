@@ -13,9 +13,9 @@ const projects = [
     github: "#"
   },
   {
-    title: "Competitive-STL",
-    description: "A collection of optimized data structures and algorithms implemented in C++ for high-performance competitive programming.",
-    tags: ["C++", "Algorithms", "Optimization"],
+    title: "Coding Related Topics Advice",
+    description: "A curated repository of technical advice, best practices, and deep dives into complex programming paradigms and system design.",
+    tags: ["Advice", "System Design", "Best Practices"],
     link: "#",
     github: "#"
   },

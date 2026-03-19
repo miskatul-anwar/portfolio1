@@ -6,6 +6,7 @@ import { SocialLinks } from './components/SocialLinks';
 import { Work } from './components/Work';
 import { Blog } from './components/Blog';
 import { About } from './components/About';
+import { SparkleEffect } from './components/SparkleEffect';
 import './styles/background.scss';
 
 export default function App() {
@@ -34,7 +35,8 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-hidden">
+      <SparkleEffect />
       {/* Futuristic Background */}
       <div className="background-container">
         <div className="grid-overlay" />
@@ -47,10 +49,14 @@ export default function App() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
-            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: 100, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: -100, filter: 'blur(10px)' }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.16, 1, 0.3, 1],
+              opacity: { duration: 0.4 }
+            }}
           >
             {renderSection()}
           </motion.div>
