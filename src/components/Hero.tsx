@@ -26,24 +26,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             className="w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/30 p-1 glass neon-glow relative group"
           >
             <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=800" 
-                alt="Miskatul Anwar" 
+              <img
+                src="../assets/image.png"
+                alt="Miskatul Anwar"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent mix-blend-overlay opacity-60 group-hover:opacity-80 transition-opacity" />
               <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
-              
+
               {/* Scanline effect */}
               <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,_rgba(0,255,204,0.05)_50%)] bg-[length:100%_4px] animate-[scanline_10s_linear_infinite]" />
             </div>
           </motion.div>
-          
+
           {/* Decorative elements */}
           <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary/40 rounded-tl-lg" />
           <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary/40 rounded-br-lg" />
-          
+
           <div className="absolute -bottom-2 -left-2 bg-primary text-background p-2 rounded-md shadow-[0_0_15px_rgba(0,255,204,0.6)] z-20 flex items-center justify-center">
             <Moon className="w-4 h-4 animate-pulse" />
           </div>
@@ -59,20 +59,20 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent leading-[0.9]">
               MISKATUL <span className="text-primary text-glow block lg:inline">ANWAR</span>
             </h1>
-            
+
             <div className="flex flex-col items-center md:items-start gap-6 mb-12">
               <p className="text-xl md:text-3xl font-mono text-primary/80 tracking-tight">
                 &gt; Systems Thinker // Problem Solver
               </p>
               <p className="max-w-xl text-base md:text-lg text-foreground/50 leading-relaxed font-light">
-                Logic-first, efficiency-driven developer specializing in competitive programming 
-                and high-performance systems. Currently architecting with <span className="text-primary/80">Rust</span> and 
+                Logic-first, efficiency-driven developer specializing in competitive programming
+                and high-performance systems. Currently architecting with <span className="text-primary/80">Rust</span> and
                 exploring <span className="text-primary/80">Tokio</span> internals.
               </p>
             </div>
-            
+
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
-              <button 
+              <button
                 onClick={() => onNavigate('work')}
                 className="group relative px-8 py-4 bg-primary text-background font-bold rounded-lg overflow-hidden transition-all hover:neon-glow active:scale-95"
               >
@@ -80,8 +80,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   INITIALIZE_WORK <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => onNavigate('about')}
                 className="glass px-8 py-4 rounded-lg flex items-center gap-2 hover:bg-white/5 transition-all duration-300 border-white/10 active:scale-95"
               >
@@ -96,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </motion.div>
         </div>
       </motion.div>
-      
+
       {/* Background Grid Accent */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-[0.03] pointer-events-none" />
     </section>
