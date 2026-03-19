@@ -41,17 +41,6 @@ export const About: React.FC = () => {
               technical curiosity drives me to understand how things work under the hood, 
               from async runtime internals to memory safety.
             </p>
-            
-            <div className="pt-8 grid grid-cols-2 gap-4">
-              <div className="glass p-4 rounded-lg border-primary/10">
-                <h4 className="text-[10px] uppercase tracking-widest text-primary mb-1">Primary Tool</h4>
-                <p className="text-sm font-mono">C++ / STL</p>
-              </div>
-              <div className="glass p-4 rounded-lg border-primary/10">
-                <h4 className="text-[10px] uppercase tracking-widest text-primary mb-1">OS Environment</h4>
-                <p className="text-sm font-mono">Arch Linux (Custom)</p>
-              </div>
-            </div>
           </div>
         </motion.div>
 

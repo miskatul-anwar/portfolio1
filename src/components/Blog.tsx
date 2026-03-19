@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BookOpen, Calendar, Clock, ArrowRight, Terminal, ArrowLeft, Share2, Bookmark } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { Badge } from './Badge';
 
@@ -278,7 +280,30 @@ export const Blog: React.FC = () => {
 
             <div className="prose prose-invert prose-primary max-w-none">
               <div className="markdown-body">
-                <ReactMarkdown>{selectedPost.content}</ReactMarkdown>
+                <ReactMarkdown
+                  components={{
+                    code({ node, inline, className, children, ...props }: any) {
+                      const match = /language-(\w+)/.exec(className || '');
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={vscDarkPlus}
+                          language={match[1]}
+                          PreTag="div"
+                          className="rounded-xl border border-white/5 !bg-[#1e1e1e] !my-6"
+                          {...props}
+                        >
+                          {String(children).replace(/\n$/, '')}
+                        </SyntaxHighlighter>
+                      ) : (
+                        <code className={`${className} bg-white/10 px-1.5 py-0.5 rounded text-primary/80`} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}
+                >
+                  {selectedPost.content}
+                </ReactMarkdown>
               </div>
             </div>
 
