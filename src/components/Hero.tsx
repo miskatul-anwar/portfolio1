@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           >
             <div className="relative w-full h-full rounded-xl overflow-hidden">
               <img
-                src="../assets/image.png"
+                src="https://media.licdn.com/dms/image/v2/D4E03AQGEukRjmNSOTA/profile-displayphoto-crop_800_800/B4EZnBqOcrGYAI-/0/1759890700990?e=1775692800&v=beta&t=ousACVsggICfp_B8dZIzNguMsbXlLFNoT-Zxc7YOrDY"
                 alt="Miskatul Anwar"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
                 referrerPolicy="no-referrer"
