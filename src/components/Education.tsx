@@ -67,7 +67,7 @@ const educationData: EducationItem[] = [
     icon: Award
   },
     {
-    institution: "south keochia goverment primary school",
+    institution: "South keochia goverment primary school",
     degree: "Pre-School",
     period: "2009 - 2010",
     location: "Satkania, Chittagong, Bangladesh",
