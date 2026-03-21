@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Mail, Send, Github, Code2, Terminal, Globe, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Send, Github, Terminal, Globe, MapPin } from 'lucide-react';
 import { Section } from './Dock';
 import { GithubStats } from './GithubStats';
 import { CompetitiveStats } from './CompetitiveStats';
@@ -15,7 +15,6 @@ const personalDetails = {
   github: "miskatul-anwar",
   leetcode: "miskat666f",
   atcoder: "miskat6603dev",
-  codeforces: "miskatul.anwar.csecu",
   picoCTF: "ghost_freak",
   location: "Chittagong, BD"
 };
@@ -151,12 +150,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                   <span className="text-sm font-mono">github.com/{personalDetails.github}</span>
                 </a>
-                <a href={`https://codeforces.com/profile/${personalDetails.codeforces}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
-                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
-                    <Code2 className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm font-mono">codeforces/{personalDetails.codeforces.split('.')[0]}</span>
-                </a>
                 <a href={`https://atcoder.jp/users/${personalDetails.atcoder}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
                   <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
                     <Globe className="w-3 h-3" />
@@ -183,7 +176,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <GithubStats username={personalDetails.github} />
         <CompetitiveStats 
           leetcodeUser={personalDetails.leetcode} 
-          codeforcesUser={personalDetails.codeforces} 
         />
       </div>
     </section>
