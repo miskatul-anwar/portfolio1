@@ -15,8 +15,8 @@ const educationData: EducationItem[] = [
   {
     institution: "University of Chittagong",
     degree: "B.Sc. in Computer Science and Engineering",
-    period: "2022 - Present",
-    location: "Chittagong, Bangladesh",
+    period: "2023 - Present",
+    location: "Hathazari, Chittagong, Bangladesh",
     details: [
       "Focused on Systems Programming, Algorithms, and Software Engineering.",
       "Active participant in competitive programming contests.",
@@ -27,8 +27,8 @@ const educationData: EducationItem[] = [
   {
     institution: "Govt. City College Chittagong",
     degree: "Higher Secondary Certificate (HSC)",
-    period: "2019 - 2021",
-    location: "Chittagong, Bangladesh",
+    period: "2020 - 2022",
+    location: "New Market Moor, Chittagong, Bangladesh",
     details: [
       "Specialized in Science group.",
       "Participated in various science fairs and math olympiads."
@@ -38,8 +38,8 @@ const educationData: EducationItem[] = [
   {
     institution: "Nasirabad Govt. High School",
     degree: "Secondary School Certificate (SSC)",
-    period: "2014 - 2019",
-    location: "Chittagong, Bangladesh",
+    period: "2018 - 2020",
+    location: "GEC, Chittagong, Bangladesh",
     details: [
       "Foundational education with a focus on Mathematics and Science.",
       "Developed early interest in computer science and technology."
@@ -49,8 +49,8 @@ const educationData: EducationItem[] = [
   {
     institution: "Nanupur Abo Subhan high school",
     degree: "Junior School Certificate (JSC)",
-    period: "2011 - 2014",
-    location: "Chittagong, Bangladesh",
+    period: "2015 - 2017",
+    location: "Nanupur, Fatickchari, Chittagong, Bangladesh",
     details: [
       "Early academic excellence and foundational learning."
     ],
@@ -59,8 +59,18 @@ const educationData: EducationItem[] = [
   {
     institution: "East Maizbhander Govt Primary High School",
     degree: "Primary School Certificate (PSC)",
-    period: "2006 - 2011",
-    location: "Chittagong, Bangladesh",
+    period: "2010 - 2014",
+    location: "Maizbhandar, Fatickchari, Chittagong, Bangladesh",
+    details: [
+      "Primary education foundation."
+    ],
+    icon: Award
+  },
+    {
+    institution: "south keochia goverment primary school",
+    degree: "Pre-School",
+    period: "2010 - 2014",
+    location: "Satkania, Chittagong, Bangladesh",
     details: [
       "Primary education foundation."
     ],
