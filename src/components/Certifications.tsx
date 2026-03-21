@@ -80,7 +80,7 @@ export const Certifications: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.05 }}
-            className="glass p-6 rounded-2xl group hover:border-primary/50 transition-all duration-300 flex flex-col justify-between"
+            className="glass p-6 rounded-[2rem] group hover:border-primary/50 transition-all duration-300 flex flex-col justify-between"
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`p-3 rounded-xl bg-foreground/5 ${cert.color}`}>

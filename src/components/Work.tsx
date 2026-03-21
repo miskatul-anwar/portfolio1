@@ -349,7 +349,7 @@ export const Work: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => setSelectedProject(project)}
-                  className="group glass rounded-3xl overflow-hidden cursor-pointer hover:bg-foreground/5 transition-all"
+                  className="group glass rounded-[2rem] overflow-hidden cursor-pointer hover:bg-foreground/5 transition-all"
                 >
                   <div className="aspect-video overflow-hidden relative">
                     <img 
@@ -394,7 +394,7 @@ export const Work: React.FC = () => {
               BACK TO PROJECTS
             </button>
 
-            <div className="glass rounded-3xl overflow-hidden mb-12">
+            <div className="glass rounded-[2rem] overflow-hidden mb-12">
               <div className="aspect-video w-full overflow-hidden">
                 <img 
                   src={selectedProject.image} 

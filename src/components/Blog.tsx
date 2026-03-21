@@ -179,7 +179,7 @@ export const Blog: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setSelectedPost(post)}
-                  className="group glass p-8 rounded-2xl hover:bg-foreground/5 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                  className="group glass p-8 rounded-[2rem] hover:bg-foreground/5 transition-all duration-300 cursor-pointer relative overflow-hidden"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                     <div className="flex items-center gap-4 text-xs text-foreground/40 font-mono">
@@ -217,7 +217,7 @@ export const Blog: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="glass p-8 md:p-12 rounded-3xl relative"
+            className="glass p-8 md:p-12 rounded-[2rem] relative"
           >
             <button
               onClick={() => setSelectedPost(null)}

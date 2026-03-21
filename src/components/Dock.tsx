@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Home, Briefcase, BookOpen, User, Cpu, GraduationCap, Award } from 'lucide-react';
+import { Home, Briefcase, BookOpen, User, Cpu, GraduationCap, Award, FileText } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
-export type Section = 'home' | 'work' | 'blog' | 'about' | 'skills' | 'education' | 'certifications';
+export type Section = 'home' | 'work' | 'blog' | 'about' | 'skills' | 'education' | 'certifications' | 'cv';
 
 interface DockProps {
   activeSection: Section;
@@ -16,17 +16,18 @@ const navItems = [
   { id: 'work', icon: Briefcase, label: 'Work' },
   { id: 'education', icon: GraduationCap, label: 'Education' },
   { id: 'certifications', icon: Award, label: 'Certifications' },
+  { id: 'cv', icon: FileText, label: 'CV' },
   { id: 'blog', icon: BookOpen, label: 'Blog' },
   { id: 'about', icon: User, label: 'About' },
 ] as const;
 
 export const Dock: React.FC<DockProps> = ({ activeSection, onSectionChange }) => {
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4">
+    <div className="fixed bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center w-[95%] sm:w-auto max-w-full">
       <motion.nav 
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="glass rounded-2xl p-2 flex items-center gap-2 shadow-2xl"
+        className="glass rounded-[2rem] p-1.5 sm:p-2 flex items-center gap-1 sm:gap-2 shadow-2xl overflow-x-auto sm:overflow-visible no-scrollbar mx-auto"
       >
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
@@ -37,7 +38,7 @@ export const Dock: React.FC<DockProps> = ({ activeSection, onSectionChange }) =>
               key={item.id}
               onClick={() => onSectionChange(item.id)}
               className={cn(
-                "relative p-3 rounded-xl transition-all duration-300 group",
+                "relative p-2 sm:p-3 rounded-xl transition-all duration-300 group flex-shrink-0",
                 isActive ? "text-primary" : "text-foreground/50 hover:text-foreground"
               )}
             >
@@ -48,8 +49,10 @@ export const Dock: React.FC<DockProps> = ({ activeSection, onSectionChange }) =>
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <Icon className="w-6 h-6 relative z-10" />
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 glass px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <Icon className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" />
+              
+              {/* Tooltip: Above Icon, visible on hover */}
+              <span className="absolute -top-10 left-1/2 -translate-x-1/2 glass px-2 py-1 rounded text-[10px] sm:text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
                 {item.label}
               </span>
             </button>

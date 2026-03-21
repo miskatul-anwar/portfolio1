@@ -9,6 +9,7 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Education } from './components/Education';
 import { Certifications } from './components/Certifications';
+import { CV } from './components/CV';
 import './styles/background.scss';
 
 export default function App() {
@@ -38,6 +39,8 @@ export default function App() {
         return <Blog key="blog" />;
       case 'about':
         return <About key="about" />;
+      case 'cv':
+        return <CV key="cv" />;
       default:
         return <Hero key="home" onNavigate={setActiveSection} />;
     }

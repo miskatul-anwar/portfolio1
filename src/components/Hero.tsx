@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Mail, Send, Github, Code2, Terminal, Globe, MapPin } from 'lucide-react';
 import { Section } from './Dock';
+import { GithubStats } from './GithubStats';
+import { CompetitiveStats } from './CompetitiveStats';
 
 interface HeroProps {
   onNavigate: (section: Section) => void;
@@ -20,7 +22,20 @@ const personalDetails = {
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
+      {/* Top Right Location Info */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5 }}
+        className="absolute top-8 right-8 z-20 flex items-center gap-2"
+      >
+        <MapPin className="w-3 h-3 text-primary" />
+        <span className="text-[11px] uppercase tracking-[0.15em] font-medium text-foreground/60">
+          Chittagong, Bangladesh
+        </span>
+      </motion.div>
+
       <div className="max-w-5xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -154,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   </div>
                   <span className="text-sm font-mono">leetcode/{personalDetails.leetcode}</span>
                 </a>
-                <a href={`https://picoctf.org/users/${personalDetails.picoCTF}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                <a href="https://play.picoctf.org/users/ghost_freak" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
                   <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
                     <Terminal className="w-5 h-5" />
                   </div>
@@ -162,16 +177,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 </a>
               </div>
             </div>
-            
-            <div className="mt-12 pt-8 border-t border-foreground/10">
-              <p className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.3em] leading-loose">
-                <span className="flex items-center gap-2"><MapPin className="w-3 h-3" /> Location: {personalDetails.location}</span>
-                Status: Active_Development <br />
-                Uptime: 99.9%
-              </p>
-            </div>
           </motion.div>
         </div>
+
+        <GithubStats username={personalDetails.github} />
+        <CompetitiveStats 
+          leetcodeUser={personalDetails.leetcode} 
+          codeforcesUser={personalDetails.codeforces} 
+        />
       </div>
     </section>
   );

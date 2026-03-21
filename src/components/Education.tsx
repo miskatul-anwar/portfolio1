@@ -94,7 +94,7 @@ export const Education: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="glass p-8 rounded-3xl relative overflow-hidden group"
+            className="glass p-8 rounded-[2rem] relative overflow-hidden group"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
             
