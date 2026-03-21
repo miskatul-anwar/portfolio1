@@ -6,7 +6,9 @@ import { SocialLinks } from './components/SocialLinks';
 import { Work } from './components/Work';
 import { Blog } from './components/Blog';
 import { About } from './components/About';
-import { SparkleEffect } from './components/SparkleEffect';
+import { Skills } from './components/Skills';
+import { Education } from './components/Education';
+import { Certifications } from './components/Certifications';
 import './styles/background.scss';
 
 export default function App() {
@@ -15,6 +17,7 @@ export default function App() {
 
   useEffect(() => {
     setIsMounted(true);
+    document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
 
   if (!isMounted) return null;
@@ -23,8 +26,14 @@ export default function App() {
     switch (activeSection) {
       case 'home':
         return <Hero key="home" onNavigate={setActiveSection} />;
+      case 'skills':
+        return <Skills key="skills" />;
       case 'work':
         return <Work key="work" />;
+      case 'education':
+        return <Education key="education" />;
+      case 'certifications':
+        return <Certifications key="certifications" />;
       case 'blog':
         return <Blog key="blog" />;
       case 'about':
@@ -36,7 +45,6 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <SparkleEffect />
       {/* Futuristic Background */}
       <div className="background-container">
         <div className="grid-overlay" />
@@ -64,7 +72,10 @@ export default function App() {
       </main>
 
       {/* Navigation Dock */}
-      <Dock activeSection={activeSection} onSectionChange={setActiveSection} />
+      <Dock 
+        activeSection={activeSection} 
+        onSectionChange={setActiveSection} 
+      />
 
       {/* Custom Cursor / Accent */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 z-50 pointer-events-none" />

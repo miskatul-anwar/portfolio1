@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Home, Briefcase, BookOpen, User } from 'lucide-react';
+import { Home, Briefcase, BookOpen, User, Cpu, GraduationCap, Award } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
-export type Section = 'home' | 'work' | 'blog' | 'about';
+export type Section = 'home' | 'work' | 'blog' | 'about' | 'skills' | 'education' | 'certifications';
 
 interface DockProps {
   activeSection: Section;
@@ -12,14 +12,17 @@ interface DockProps {
 
 const navItems = [
   { id: 'home', icon: Home, label: 'Home' },
+  { id: 'skills', icon: Cpu, label: 'Skills' },
   { id: 'work', icon: Briefcase, label: 'Work' },
+  { id: 'education', icon: GraduationCap, label: 'Education' },
+  { id: 'certifications', icon: Award, label: 'Certifications' },
   { id: 'blog', icon: BookOpen, label: 'Blog' },
   { id: 'about', icon: User, label: 'About' },
 ] as const;
 
 export const Dock: React.FC<DockProps> = ({ activeSection, onSectionChange }) => {
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4">
       <motion.nav 
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

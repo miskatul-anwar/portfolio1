@@ -1,104 +1,178 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Code, Zap, Terminal, Cpu, Moon } from 'lucide-react';
+import { ArrowRight, Mail, Send, Github, Code2, Terminal, Globe, MapPin } from 'lucide-react';
 import { Section } from './Dock';
-import { SocialLinks } from './SocialLinks';
 
 interface HeroProps {
   onNavigate: (section: Section) => void;
 }
 
+const personalDetails = {
+  name: "Miskatul Anwar",
+  email: "miskat6603.dev@gmail.com",
+  github: "miskatul-anwar",
+  leetcode: "miskat666f",
+  atcoder: "miskat6603dev",
+  codeforces: "miskatul.anwar.csecu",
+  picoCTF: "ghost_freak",
+  location: "Chittagong, BD"
+};
+
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-0 relative overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="z-10 w-full max-w-6xl flex flex-col md:flex-row items-center justify-center md:justify-between gap-12 md:gap-20"
-      >
-        {/* Profile Picture - Top on mobile, Left on PC */}
-        <div className="relative">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative">
+      <div className="max-w-5xl w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/30 p-1 glass neon-glow relative group"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="relative inline-block mb-12"
           >
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <img
-                src="https://media.licdn.com/dms/image/v2/D4E03AQGEukRjmNSOTA/profile-displayphoto-crop_800_800/B4EZnBqOcrGYAI-/0/1759890700990?e=1775692800&v=beta&t=ousACVsggICfp_B8dZIzNguMsbXlLFNoT-Zxc7YOrDY"
-                alt="Miskatul Anwar"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent mix-blend-overlay opacity-60 group-hover:opacity-80 transition-opacity" />
-              <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
-
-              {/* Scanline effect */}
-              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,_rgba(0,255,204,0.05)_50%)] bg-[length:100%_4px] animate-[scanline_10s_linear_infinite]" />
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-tr from-primary via-secondary to-accent animate-float">
+              <div className="w-full h-full rounded-full overflow-hidden glass border-2 border-background">
+                <img 
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQGEukRjmNSOTA/profile-displayphoto-crop_800_800/B4EZnBqOcrGYAI-/0/1759890700990?e=1775692800&v=beta&t=ousACVsggICfp_B8dZIzNguMsbXlLFNoT-Zxc7YOrDY" 
+                  alt={personalDetails.name} 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://picsum.photos/seed/miskatul/400/400";
+                  }}
+                />
+              </div>
+            </div>
+            {/* Facebook Messenger styled status dot */}
+            <div className="absolute bottom-2 right-2 w-6 h-6 bg-background rounded-full flex items-center justify-center border-2 border-background">
+              <div className="w-4 h-4 bg-primary rounded-full shadow-[0_0_10px_rgba(0,255,204,0.5)]" />
             </div>
           </motion.div>
 
-          {/* Decorative elements */}
-          <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary/40 rounded-tl-lg" />
-          <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary/40 rounded-br-lg" />
+          <h1 className="text-5xl md:text-8xl font-bold mb-8 tracking-tighter leading-[0.9] font-display whitespace-nowrap">
+            {personalDetails.name.split(' ')[0]}{' '}
+            <span className="text-primary text-glow">{personalDetails.name.split(' ')[1]}</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed font-light mb-12">
+            I'm a <span className="text-foreground font-medium">Systems & App Developer</span> focused on building high-performance, 
+            memory-safe, and scalable infrastructure. From low-level kernels to modern cross-platform apps, 
+            I bridge the gap between hardware and software.
+          </p>
 
-          <div className="absolute -bottom-2 -left-2 bg-primary text-background p-2 rounded-md shadow-[0_0_15px_rgba(0,255,204,0.6)] z-20 flex items-center justify-center">
-            <Moon className="w-4 h-4 animate-pulse" />
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <button 
+              onClick={() => onNavigate('work')}
+              className="px-8 py-4 bg-primary text-background font-bold rounded-2xl hover:scale-105 transition-all flex items-center gap-2 group shadow-xl shadow-primary/20"
+            >
+              View Projects
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button 
+              onClick={() => onNavigate('skills')}
+              className="px-8 py-4 glass font-bold rounded-2xl hover:bg-foreground/5 transition-all flex items-center gap-2"
+            >
+              Technical Arsenal
+            </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Content - Bottom on mobile, Right on PC */}
-        <div className="flex-1 text-center md:text-left w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="lg:col-span-2 glass p-8 md:p-10 rounded-3xl relative overflow-hidden group"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent leading-[0.9]">
-              MISKATUL <span className="text-primary text-glow block lg:inline">ANWAR</span>
-            </h1>
-
-            <div className="flex flex-col items-center md:items-start gap-6 mb-12">
-              <p className="text-xl md:text-3xl font-mono text-primary/80 tracking-tight">
-                &gt; Systems Thinker // Problem Solver
-              </p>
-              <p className="max-w-xl text-base md:text-lg text-foreground/50 leading-relaxed font-light">
-                Logic-first, efficiency-driven developer specializing in competitive programming
-                and high-performance systems. Currently architecting with <span className="text-primary/80">Rust</span> and
-                exploring <span className="text-primary/80">Tokio</span> internals.
-              </p>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Mail className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold font-display uppercase tracking-wider">Drop an Email</h3>
             </div>
-
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
-              <button
-                onClick={() => onNavigate('work')}
-                className="group relative px-8 py-4 bg-primary text-background font-bold rounded-lg overflow-hidden transition-all hover:neon-glow active:scale-95"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  INITIALIZE_WORK <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
+            
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm focus:border-primary/50 outline-none transition-all font-mono"
+                />
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm focus:border-primary/50 outline-none transition-all font-mono"
+                />
+              </div>
+              <textarea 
+                placeholder="Secure Message Payload..." 
+                rows={3}
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm focus:border-primary/50 outline-none transition-all font-mono resize-none"
+              />
+              <button className="w-full py-4 bg-foreground text-background font-bold rounded-xl hover:bg-primary hover:text-background transition-all flex items-center justify-center gap-2 group">
+                Transmit Signal
+                <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
+            </form>
+          </motion.div>
 
-              <button
-                onClick={() => onNavigate('about')}
-                className="glass px-8 py-4 rounded-lg flex items-center gap-2 hover:bg-white/5 transition-all duration-300 border-white/10 active:scale-95"
-              >
-                <Cpu className="w-4 h-4 text-primary" />
-                <span className="font-mono text-sm uppercase tracking-widest">System_Specs</span>
-              </button>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="glass p-8 md:p-10 rounded-3xl flex flex-col justify-between"
+          >
+            <div>
+              <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-8">Connect Nodes</h3>
+              <div className="space-y-4">
+                <a href={`https://github.com/${personalDetails.github}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Github className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-mono">github.com/{personalDetails.github}</span>
+                </a>
+                <a href={`https://codeforces.com/profile/${personalDetails.codeforces}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Code2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-mono">codeforces/{personalDetails.codeforces.split('.')[0]}</span>
+                </a>
+                <a href={`https://atcoder.jp/users/${personalDetails.atcoder}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Globe className="w-3 h-3" />
+                  </div>
+                  <span className="text-sm font-mono">atcoder/{personalDetails.atcoder}</span>
+                </a>
+                <a href={`https://leetcode.com/${personalDetails.leetcode}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-mono">leetcode/{personalDetails.leetcode}</span>
+                </a>
+                <a href={`https://picoctf.org/users/${personalDetails.picoCTF}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors group">
+                  <div className="p-2 glass rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Terminal className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-mono">picoCTF/{personalDetails.picoCTF}</span>
+                </a>
+              </div>
             </div>
-
-            <div className="md:justify-start flex">
-              <SocialLinks />
+            
+            <div className="mt-12 pt-8 border-t border-foreground/10">
+              <p className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.3em] leading-loose">
+                <span className="flex items-center gap-2"><MapPin className="w-3 h-3" /> Location: {personalDetails.location}</span>
+                Status: Active_Development <br />
+                Uptime: 99.9%
+              </p>
             </div>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Background Grid Accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-[0.03] pointer-events-none" />
+      </div>
     </section>
   );
 };

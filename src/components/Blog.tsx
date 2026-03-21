@@ -19,158 +19,125 @@ interface Post {
 
 const posts: Post[] = [
   {
-    id: "tokio-polling",
-    title: "Understanding Tokio: The Polling Loop",
-    excerpt: "A deep dive into how the Tokio runtime manages tasks and how the poll function actually works under the hood.",
+    id: "nixos-immutable",
+    title: "NixOS: The Immutable Future",
+    excerpt: "Exploring the power of reproducible builds and declarative configuration with NixOS and Flakes.",
     content: `
-# Understanding Tokio: The Polling Loop
+# NixOS: The Immutable Future
 
-In the world of asynchronous Rust, **Tokio** is the de facto standard runtime. But have you ever wondered how it actually manages to run thousands of tasks on just a few threads?
+NixOS is not just another Linux distribution; it's a paradigm shift in how we manage our operating systems.
 
-## The Future Trait
+## Declarative Configuration
 
-At the heart of Rust's async model is the \`Future\` trait. Unlike promises in other languages, Rust futures are *lazy*. They don't do anything until they are polled.
+In NixOS, your entire system state is described in a single file (or a set of files). This means you can recreate your exact environment on any machine.
 
-\`\`\`rust
-pub trait Future {
-    type Output;
-    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>;
+\`\`\`nix
+{ config, pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ];
+  boot.loader.systemd-boot.enable = true;
+  networking.hostName = "miskatul-nixos";
+  environment.systemPackages = with pkgs; [ vim git rustup ];
 }
 \`\`\`
 
-## The Executor's Job
+## Flakes: The Game Changer
 
-The Tokio executor is responsible for calling \`poll\` on your futures. When a future is polled, it can return one of two things:
-1. \`Poll::Ready(val)\`: The future is finished, here is the result.
-2. \`Poll::Pending\`: The future is not ready yet.
-
-## Wakers
-
-If a future returns \`Pending\`, it must ensure that the executor is notified when it *is* ready to be polled again. This is done via the \`Waker\`.
-
-When the underlying resource (like a network socket) becomes ready, it calls \`waker.wake()\`, which puts the task back onto the executor's run queue.
+Flakes provide a standardized way to manage dependencies and lock versions, ensuring that your configuration is truly reproducible across time and space.
 
 ## Conclusion
 
-Tokio's efficiency comes from this cooperative, pull-based model. By only polling tasks that have been explicitly woken, it avoids the overhead of constant busy-waiting.
+If you value stability and reproducibility, NixOS is the ultimate tool for developers who want to treat their OS like code.
+    `,
+    date: "Mar 20, 2026",
+    readTime: "10 min read",
+    tag: "Linux"
+  },
+  {
+    id: "rust-rayon",
+    title: "High-Performance Rust: Beyond Async",
+    excerpt: "When async isn't enough, Rayon brings data-parallelism to Rust with zero-cost abstractions.",
+    content: `
+# High-Performance Rust: Beyond Async
+
+While \`tokio\` is great for I/O-bound tasks, \`rayon\` is the king of CPU-bound parallelism in Rust.
+
+## The Magic of Iterators
+
+Rayon allows you to turn a sequential iterator into a parallel one with just one method call: \`par_iter()\`.
+
+\`\`\`rust
+use rayon::prelude::*;
+
+fn sum_of_squares(input: &[i32]) -> i32 {
+    input.par_iter()
+         .map(|&i| i * i)
+         .sum()
+}
+\`\`\`
+
+## Work-Stealing Scheduler
+
+Rayon uses a sophisticated work-stealing scheduler to ensure that all your CPU cores are kept busy without the overhead of manual thread management.
+
+## Conclusion
+
+For data-intensive applications, Rayon is an indispensable tool in the Rustacean's toolkit.
+    `,
+    date: "Mar 18, 2026",
+    readTime: "8 min read",
+    tag: "Rust"
+  },
+  {
+    id: "tauri-vs-electron",
+    title: "Tauri vs Electron: A Systems Perspective",
+    excerpt: "Comparing the architecture and performance of modern desktop application frameworks.",
+    content: `
+# Tauri vs Electron
+
+Building desktop apps with web technologies has never been easier, but the choice of framework has massive implications for performance and security.
+
+## Binary Size
+
+Electron apps are notorious for their massive binary sizes because they bundle Chromium. Tauri, on the other hand, uses the system's native WebView, resulting in binaries that are often 10x smaller.
+
+## Security
+
+Tauri is built with Rust and follows a "secure by default" philosophy. It restricts access to system APIs unless explicitly enabled, reducing the attack surface significantly.
+
+## Performance
+
+By offloading heavy logic to Rust, Tauri apps can achieve performance that is simply not possible in pure JavaScript environments.
     `,
     date: "Mar 15, 2026",
     readTime: "12 min read",
-    tag: "Rust"
+    tag: "Systems"
   },
   {
-    id: "rust-memory-safety",
-    title: "Rust Memory Safety: Beyond the Borrow Checker",
-    excerpt: "Exploring how Rust's ownership model prevents common memory bugs and why it matters for systems programming.",
+    id: "db-normalization",
+    title: "Database Normalization: The Normaflow Way",
+    excerpt: "A guide to 1NF, 2NF, and 3NF, and how Normaflow automates the decomposition process.",
     content: `
-# Rust Memory Safety: Beyond the Borrow Checker
+# Database Normalization
 
-Rust is famous for its memory safety guarantees without a garbage collector. This is achieved through a unique system of ownership, borrowing, and lifetimes.
+Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.
 
-## Ownership Rules
+## The Normal Forms
 
-1. Each value in Rust has a variable that’s called its owner.
-2. There can only be one owner at a time.
-3. When the owner goes out of scope, the value will be dropped.
+- **1NF**: Eliminate duplicate columns and ensure atomicity.
+- **2NF**: Remove partial dependencies on the primary key.
+- **3NF**: Remove transitive dependencies.
 
-## Borrowing
+## Automating with Normaflow
 
-Instead of transferring ownership, you can *borrow* a value.
-- **Immutable Borrowing**: \`&T\` - You can have multiple immutable borrows.
-- **Mutable Borrowing**: \`&mut T\` - You can have exactly one mutable borrow.
+Normaflow takes your raw schema and visually guides you through the decomposition process, generating the final SQL DDL for you.
 
-## Why it matters
+## Conclusion
 
-This system prevents:
-- **Dangling Pointers**: You can't have a reference to data that has been dropped.
-- **Data Races**: Multiple threads can't mutate the same data simultaneously.
-- **Double Free**: Data is only dropped once when the owner goes out of scope.
-
-## The Zero-Cost Abstraction
-
-The best part? Most of these checks happen at *compile time*. There is no runtime overhead for this safety.
+Proper normalization is the foundation of a scalable and maintainable database architecture.
     `,
-    date: "Mar 10, 2026",
+    date: "Mar 12, 2026",
     readTime: "15 min read",
-    tag: "Rust"
-  },
-  {
-    id: "rust-error-handling",
-    title: "Elegant Error Handling in Rust",
-    excerpt: "Mastering Result and Option types to write robust and readable code that handles failures gracefully.",
-    content: `
-# Elegant Error Handling in Rust
-
-Rust doesn't have exceptions. Instead, it uses the \`Result<T, E>\` and \`Option<T>\` enums to represent potential failure.
-
-## The Result Enum
-
-\`\`\`rust
-enum Result<T, E> {
-    Ok(T),
-    Err(E),
-}
-\`\`\`
-
-## The ? Operator
-
-One of Rust's most beloved features is the \`?\` operator. It allows you to propagate errors up the call stack with minimal boilerplate.
-
-\`\`\`rust
-fn read_username_from_file() -> Result<String, io::Error> {
-    let mut f = File::open("hello.txt")?;
-    let mut s = String::new();
-    f.read_to_string(&mut s)?;
-    Ok(s)
-}
-\`\`\`
-
-## Conclusion
-
-By making errors explicit, Rust forces you to think about failure cases. This leads to more robust software that doesn't crash unexpectedly in production.
-    `,
-    date: "Mar 05, 2026",
-    readTime: "8 min read",
-    tag: "Rust"
-  },
-  {
-    id: "cpp-stl-opt",
-    title: "C++ Competitive Programming: STL Optimization",
-    excerpt: "Techniques for squeezing every millisecond out of the STL for high-performance algorithmic problem solving.",
-    content: `
-# C++ Competitive Programming: STL Optimization
-
-In competitive programming, every millisecond counts. While the STL is powerful, using it incorrectly can lead to TLE (Time Limit Exceeded).
-
-## Fast I/O
-
-The first thing every competitive programmer should do is disable sync with stdio.
-
-\`\`\`cpp
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-\`\`\`
-
-## Avoid std::endl
-
-\`std::endl\` flushes the output buffer, which is slow. Use \`\\n\` instead.
-
-## Reserve Space
-
-If you know the size of your vector, use \`reserve()\` to avoid multiple reallocations.
-
-\`\`\`cpp
-vector<int> v;
-v.reserve(1000000);
-\`\`\`
-
-## Conclusion
-
-The STL is fast, but knowing these small tweaks can make the difference between a pass and a fail in high-stakes contests.
-    `,
-    date: "Feb 28, 2026",
-    readTime: "8 min read",
-    tag: "C++"
+    tag: "Database"
   }
 ];
 
@@ -212,7 +179,7 @@ export const Blog: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setSelectedPost(post)}
-                  className="group glass p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                  className="group glass p-8 rounded-2xl hover:bg-foreground/5 transition-all duration-300 cursor-pointer relative overflow-hidden"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                     <div className="flex items-center gap-4 text-xs text-foreground/40 font-mono">
@@ -289,13 +256,13 @@ export const Blog: React.FC = () => {
                           style={vscDarkPlus}
                           language={match[1]}
                           PreTag="div"
-                          className="rounded-xl border border-white/5 !bg-[#1e1e1e] !my-6"
+                          className="rounded-xl border border-foreground/5 !bg-[#1e1e1e] !my-6"
                           {...props}
                         >
                           {String(children).replace(/\n$/, '')}
                         </SyntaxHighlighter>
                       ) : (
-                        <code className={`${className} bg-white/10 px-1.5 py-0.5 rounded text-primary/80`} {...props}>
+                        <code className={`${className} bg-foreground/10 px-1.5 py-0.5 rounded text-primary/80`} {...props}>
                           {children}
                         </code>
                       );
@@ -307,12 +274,12 @@ export const Blog: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-16 pt-8 border-t border-white/10 flex items-center justify-between">
+            <div className="mt-16 pt-8 border-t border-foreground/10 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <button className="p-2 glass rounded-lg hover:bg-white/10 transition-colors">
+                <button className="p-2 glass rounded-lg hover:bg-foreground/10 transition-colors">
                   <Share2 className="w-4 h-4" />
                 </button>
-                <button className="p-2 glass rounded-lg hover:bg-white/10 transition-colors">
+                <button className="p-2 glass rounded-lg hover:bg-foreground/10 transition-colors">
                   <Bookmark className="w-4 h-4" />
                 </button>
               </div>

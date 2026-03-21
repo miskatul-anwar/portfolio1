@@ -1,103 +1,109 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { User, Cpu, Brain, Database, Layers, Terminal, Code2 } from 'lucide-react';
-
-const skills = [
-  { name: "Algorithm Design", level: 98, icon: Brain },
-  { name: "C++ (Competitive Programming)", level: 95, icon: Code2 },
-  { name: "Rust & Systems", level: 75, icon: Cpu },
-  { name: "Backend (Axum/Tokio)", level: 70, icon: Database },
-  { name: "Linux (Arch/Customization)", level: 90, icon: Terminal },
-];
+import { Terminal, Cpu, Brain, Database, Code2, Globe, Heart, Coffee } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
-    <section className="py-32 px-4 max-w-6xl mx-auto min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
-            <Terminal className="text-primary w-8 h-8" />
-            System_Profile
-          </h2>
-          
-          <div className="space-y-6 text-foreground/70 leading-relaxed font-light">
-            <p>
-              I am a <span className="text-primary/80 font-medium">problem solver and systems-oriented developer</span>. 
-              My engineering philosophy is built on a logic-first, efficiency-driven mindset, 
-              emphasizing correctness and deep understanding over abstraction.
-            </p>
-            <p>
-              With a strong foundation in <span className="text-primary/80 font-medium">competitive programming</span> using C++, 
-              I approach every challenge through the lens of algorithmic optimization and 
-              performance-focused development.
-            </p>
-            <p>
-              My workflow is rooted in <span className="text-primary/80 font-medium">Arch Linux</span>, 
-              where I maintain a heavily customized, terminal-first environment. This 
-              technical curiosity drives me to understand how things work under the hood, 
-              from async runtime internals to memory safety.
-            </p>
-          </div>
-        </motion.div>
+    <section className="py-32 px-4 max-w-4xl mx-auto min-h-screen">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-16"
+      >
+        <h2 className="text-4xl font-bold mb-4 flex items-center gap-3">
+          <Terminal className="text-primary w-8 h-8" />
+          About Me
+        </h2>
+        <p className="text-foreground/50 font-mono text-sm">
+          &gt; last updated: 2026-02-20
+        </p>
+      </motion.div>
 
+      <div className="space-y-16">
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass p-8 rounded-2xl border-primary/10 relative overflow-hidden"
+          className="glass p-8 md:p-12 rounded-3xl"
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0" />
-          
-          <h3 className="text-xl font-bold mb-8 font-mono uppercase tracking-widest text-primary/80 flex items-center gap-2">
-            <Cpu className="w-5 h-5" />
-            Hardware_Abstraction
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+            <Code2 className="text-primary w-6 h-6" />
+            Languages & Low-Level Fascination
           </h3>
-          
-          <div className="space-y-8">
-            {skills.map((skill, index) => {
-              const Icon = skill.icon;
-              return (
-                <div key={skill.name}>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <Icon className="w-4 h-4 text-primary/60" />
-                      <span className="text-sm font-mono tracking-tight">{skill.name}</span>
-                    </div>
-                    <span className="text-xs font-mono text-primary/60">{skill.level}%</span>
-                  </div>
-                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
-                      className="h-full bg-primary"
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-12 p-6 rounded-xl bg-primary/5 border border-primary/20 font-mono">
-            <h4 className="text-xs font-bold mb-3 text-primary uppercase tracking-widest">Current_Focus</h4>
-            <ul className="text-[11px] space-y-2 text-foreground/60">
-              <li className="flex items-center gap-2">
-                <span className="text-primary">01</span> Mastering Rust memory safety
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-primary">02</span> Async runtime internals (Tokio)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-primary">03</span> Scalable backends with Axum
-              </li>
-            </ul>
+          <div className="space-y-4 text-foreground/70 leading-relaxed">
+            <p>
+              My journey into the digital realm started with a deep curiosity about how things work at the most fundamental level. 
+              I find a unique beauty in the strictness of <span className="text-primary">Rust</span> and the raw power of <span className="text-primary">C/C++</span>.
+            </p>
+            <p>
+              I don't just write code; I orchestrate logic. Whether it's optimizing a hot loop in a systems application or 
+              designing a memory-safe architecture, I'm driven by the pursuit of technical excellence and performance.
+            </p>
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div className="glass p-8 rounded-3xl">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <Cpu className="text-primary w-5 h-5" />
+              Systems & Security
+            </h3>
+            <p className="text-sm text-foreground/60 leading-relaxed">
+              Tinkering with Linux kernels, exploring async runtimes like Tokio, and understanding the nuances of memory management. 
+              I enjoy the challenge of building secure, resilient systems that can handle the demands of modern computing.
+            </p>
+          </div>
+
+          <div className="glass p-8 rounded-3xl">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <Brain className="text-primary w-5 h-5" />
+              ML & Research
+            </h3>
+            <p className="text-sm text-foreground/60 leading-relaxed">
+              Applying algorithmic thinking to machine learning. I'm interested in the intersection of high-performance computing 
+              and AI, exploring how we can make models more efficient and accessible.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass p-8 md:p-12 rounded-3xl"
+        >
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+            <Globe className="text-primary w-6 h-6" />
+            Beyond the Terminal
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-foreground/70">
+            <div>
+              <h4 className="text-sm font-bold mb-2 text-primary uppercase tracking-widest">Current Work</h4>
+              <p className="text-sm">
+                Building scalable backends with Axum, exploring the Leptos ecosystem for type-safe frontend development, 
+                and contributing to open-source systems tools.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold mb-2 text-primary uppercase tracking-widest">Daily Tools</h4>
+              <p className="text-sm">
+                Emacs for everything, Arch Linux as the base, and a terminal-first workflow that prioritizes speed and precision.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center gap-8 py-8 opacity-30 grayscale hover:grayscale-0 transition-all">
+          <Heart className="w-6 h-6" />
+          <Coffee className="w-6 h-6" />
+          <Database className="w-6 h-6" />
+        </div>
       </div>
     </section>
   );
