@@ -145,7 +145,7 @@ export const Blog: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   return (
-    <section className="py-32 px-4 max-w-4xl mx-auto min-h-screen">
+    <section className="py-12 px-4 max-w-4xl mx-auto min-h-screen">
       <AnimatePresence mode="wait">
         {!selectedPost ? (
           <motion.div

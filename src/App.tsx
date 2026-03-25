@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Dock, Section } from './components/Dock';
+import { Breadcrumb } from './components/Breadcrumb';
 import { Hero } from './components/Hero';
 import { SocialLinks } from './components/SocialLinks';
 import { Work } from './components/Work';
@@ -60,7 +61,9 @@ export default function App() {
       </div>
 
       {/* Main Content */}
-      <main className="relative z-10 pb-32">
+      <Breadcrumb activeSection={activeSection} onNavigate={setActiveSection} />
+
+      <main className="relative z-10 pb-32 pt-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}

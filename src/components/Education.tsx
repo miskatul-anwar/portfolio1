@@ -88,7 +88,7 @@ const educationData: EducationItem[] = [
 
 export const Education: React.FC = () => {
   return (
-    <section className="py-32 px-4 max-w-4xl mx-auto min-h-screen">
+    <section className="py-12 px-4 max-w-4xl mx-auto min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ export const Education: React.FC = () => {
                 {/* Curvy Connection (SVG) */}
                 <svg 
                   className={cn(
-                    "absolute top-1/2 -translate-y-1/2 h-24 w-24 pointer-events-none z-10 overflow-visible",
+                    "absolute top-1/2 -translate-y-1/2 h-24 w-24 pointer-events-none z-0 overflow-visible",
                     "left-8 md:left-1/2 -translate-x-1/2", // Centered on backbone for all screen sizes
                     !isEven && "md:scale-x-[-1]" // Flip for items on the left side
                   )}
@@ -148,7 +148,7 @@ export const Education: React.FC = () => {
                   />
                 </svg>
 
-                <div className="w-full md:w-[calc(50%-3rem)] ml-16 md:ml-0">
+                <div className="w-full md:w-[calc(50%-3rem)] ml-16 md:ml-0 relative z-10">
                   <div className="glass overflow-hidden rounded-[2.5rem] group hover:bg-foreground/5 transition-all duration-500">
                     <div className="aspect-[21/9] w-full overflow-hidden relative">
                       <img 

@@ -4,7 +4,7 @@ import { Terminal, Cpu, Brain, Database, Code2, Globe, Heart, Coffee } from 'luc
 
 export const About: React.FC = () => {
   return (
-    <section className="py-32 px-4 max-w-4xl mx-auto min-h-screen">
+    <section className="py-12 px-4 max-w-4xl mx-auto min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

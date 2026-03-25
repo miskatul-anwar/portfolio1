@@ -89,20 +89,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
     }
   };
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Top Right Location Info */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
-        className="absolute top-8 right-8 z-20 flex items-center gap-2"
-      >
-        <MapPin className="w-3 h-3 text-primary" />
-        <span className="text-[11px] uppercase tracking-[0.15em] font-medium text-foreground/60">
-          Chittagong, Bangladesh
-        </span>
-      </motion.div>
-
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
       <div className="max-w-5xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

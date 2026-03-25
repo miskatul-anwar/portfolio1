@@ -11,7 +11,7 @@ export const CV: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-32 px-4 flex flex-col items-center">
+    <div className="min-h-screen pt-4 pb-32 px-4 flex flex-col items-center">
       <div className="max-w-4xl w-full flex justify-center items-center mb-8">
         <h2 className="text-4xl font-bold font-display uppercase tracking-tighter">Curriculum Vitae</h2>
       </div>

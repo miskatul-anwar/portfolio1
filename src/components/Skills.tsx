@@ -21,6 +21,7 @@ import {
   FileCode,
   Command
 } from 'lucide-react';
+import OrbitingCirclesGlobe from './OrbitingCircles';
 
 interface Skill {
   name: string;
@@ -138,7 +139,7 @@ const skillCategories: SkillCategory[] = [
 
 export const Skills: React.FC = () => {
   return (
-    <section className="py-32 px-4 max-w-6xl mx-auto min-h-screen">
+    <section className="py-12 px-4 max-w-6xl mx-auto min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -152,6 +153,16 @@ export const Skills: React.FC = () => {
         <p className="text-foreground/50 text-lg max-w-2xl">
           A comprehensive overview of my technical skills and tools across the stack.
         </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="mb-20"
+      >
+        <OrbitingCirclesGlobe />
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -316,7 +316,7 @@ export const Work: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section className="py-32 px-4 max-w-6xl mx-auto min-h-screen">
+    <section className="py-12 px-4 max-w-6xl mx-auto min-h-screen">
       <AnimatePresence mode="wait">
         {!selectedProject ? (
           <motion.div
