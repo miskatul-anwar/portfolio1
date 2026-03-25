@@ -106,7 +106,7 @@ export const Education: React.FC = () => {
 
       <div className="relative">
         {/* Straight Backbone */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-primary/10 -translate-x-1/2 z-0" />
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-primary/10 -translate-x-1/2 z-[-1]" />
 
         <div className="space-y-12 md:space-y-20">
           {educationData.map((item, idx) => {
@@ -126,7 +126,7 @@ export const Education: React.FC = () => {
                 {/* Curvy Connection (SVG) */}
                 <svg 
                   className={cn(
-                    "absolute top-1/2 -translate-y-1/2 h-24 w-24 pointer-events-none z-0 overflow-visible",
+                    "absolute top-1/2 -translate-y-1/2 h-24 w-24 pointer-events-none z-[-1] overflow-visible",
                     "left-8 md:left-1/2 -translate-x-1/2", // Centered on backbone for all screen sizes
                     !isEven && "md:scale-x-[-1]" // Flip for items on the left side
                   )}
