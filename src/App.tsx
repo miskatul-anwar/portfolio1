@@ -21,6 +21,10 @@ export default function App() {
     document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [activeSection]);
+
   if (!isMounted) return null;
 
   const renderSection = () => {
