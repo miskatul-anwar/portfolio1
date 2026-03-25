@@ -8,7 +8,12 @@ const orbits = [
     size: "w-[196px] h-[196px] md:w-[315px] md:h-[315px]",
     duration: 18,
     icons: [
-      { src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg", alt: "Rust", angle: -60 },
+      { 
+        src: "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-icon.svg", 
+        alt: "Rust", 
+        angle: -60,
+        style: { filter: "brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(98%) contrast(107%)" }
+      },
       { src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg", alt: "React", angle: 0 },
       { src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", alt: "Python", angle: 60 },
     ],
@@ -104,7 +109,8 @@ export default function OrbitingCirclesGlobe() {
                     alt={iconData.alt}
                     width={32}
                     height={32}
-                    className="w-5 h-5 md:w-8 md:h-8 grayscale hover:grayscale-0 transition-all duration-300"
+                    className="w-5 h-5 md:w-8 md:h-8 transition-all duration-300"
+                    style={(iconData as any).style}
                     referrerPolicy="no-referrer"
                   />
                 </div>
